@@ -1,12 +1,35 @@
-﻿using System.Collections.Generic;
+﻿using System;
+using System.Collections.Generic;
 
 namespace Ganss.Text
 {
     /// <summary>
     /// A <a href="https://en.wikipedia.org/wiki/Trie">Trie</a>.
     /// </summary>
+    [Serializable]
     public class Trie
     {
+        
+        /// <summary>
+        /// The Highest ID number used in this Trie hierarchy
+        /// </summary>
+        public static long LatestID = 0;
+        
+        /// <summary>
+        /// has this entry been saved yet.
+        /// </summary>
+        public bool hasSaved;
+
+        /// <summary>
+        /// The unique long integer ID of this entry
+        /// </summary>
+        public long uniqueID;
+
+        /// <summary>
+        /// Which comparer was used 
+        /// </summary>
+        public IEqualityComparer<char>  usedComparer;
+        
         /// <summary>
         /// Gets or sets the child nodes.
         /// </summary>
@@ -54,6 +77,9 @@ namespace Ganss.Text
         {
             Word = "";
             Next = new Dictionary<char, Trie>();
+            LatestID += 1;
+            uniqueID = LatestID;
+            hasSaved = false; 
         }
 
         /// <summary>
@@ -64,6 +90,10 @@ namespace Ganss.Text
         {
             Word = "";
             Next = new Dictionary<char, Trie>(comparer);
+            usedComparer = comparer;
+            LatestID += 1;
+            uniqueID = LatestID;
+            hasSaved = false;
         }
 
         /// <summary>
@@ -85,6 +115,7 @@ namespace Ganss.Text
 
             return node;
         }
+     
 
         /// <summary>
         /// Finds the failure node for a specified suffix within the given range of indices.

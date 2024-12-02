@@ -1,10 +1,13 @@
-﻿using System.Collections.Generic;
+﻿using System;
+using System.Collections.Generic;
+
 
 namespace Ganss.Text
 {
     /// <summary>
     /// Represents a word match.
     /// </summary>
+    [Serializable]
     public struct WordMatch
     {
         /// <summary>
@@ -27,6 +30,7 @@ namespace Ganss.Text
     /// <summary>
     /// Implements the <a href="https://en.wikipedia.org/wiki/Aho%E2%80%93Corasick_string_matching_algorithm">Aho-Corasick algorithm</a>.
     /// </summary>
+    [Serializable]
     public class AhoCorasick
     {
         /// <summary>
@@ -35,7 +39,7 @@ namespace Ganss.Text
         /// <value>
         /// The trie.
         /// </value>
-        protected Trie Trie { get; set; }
+        public Trie Trie { get; set; }
 
         /// <summary>
         /// Initializes a new instance of the <see cref="AhoCorasick"/> class.
