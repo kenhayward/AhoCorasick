@@ -68,7 +68,7 @@ namespace Ganss.Text
         /// <value>
         /// The word prefix.
         /// </value>
-        public string Word { get; private set; }
+        public string Word { get; set; }
 
         /// <summary>
         /// Initializes a new instance of the <see cref="Trie"/> class.
@@ -81,6 +81,8 @@ namespace Ganss.Text
             uniqueID = LatestID;
             hasSaved = false; 
         }
+
+
 
         /// <summary>
         /// Initializes a new instance of the <see cref="Trie"/> class.

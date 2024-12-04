@@ -33,6 +33,8 @@ namespace Ganss.Text
     [Serializable]
     public class AhoCorasick
     {
+
+
         /// <summary>
         /// Gets or sets the trie.
         /// </summary>
@@ -47,6 +49,7 @@ namespace Ganss.Text
         /// </summary>
         public AhoCorasick()
         {
+            Trie.LatestID = 0;
             Trie = new Trie();
         }
 
@@ -57,6 +60,7 @@ namespace Ganss.Text
         /// <param name="comparer">The comparer used to compare individual characters.</param>
         public AhoCorasick(IEqualityComparer<char> comparer)
         {
+            Trie.LatestID = 0;
             Trie = new Trie(comparer);
         }
 
